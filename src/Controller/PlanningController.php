@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 class PlanningController extends AbstractController
 {
@@ -39,4 +40,17 @@ class PlanningController extends AbstractController
             
         ]);
     }
+
+        /**
+     * @Route("/gestionCategories/{param1}/{param2}", name="gestionCategories")
+     * @ParamConverter("date", options={"format": "Y-m-d"})
+     */
+    public function gestionCategories(DateTime $param1,DateTime $param2,PlanningRepository $PlanningRepository,EntityManagerInterface $manager): Response
+    {
+        return $this->render('planning/construction.html.twig'
+
+            
+    );
+    }
+
 }
